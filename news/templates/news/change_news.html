@@ -1,0 +1,20 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h1>Изменение записи</h1>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            <b>Заголовок:</b><br>
+            <input type="text" name="title" maxlength="50"
+                   value="{{ obj.title }}" required>
+        </p>
+        <p>
+            <b>Контент:</b><br>
+            <textarea name="content" cols="40" rows="10">{{ obj.content }}</textarea>
+        </p>
+        <button type="submit">Изменить запись</button>
+    </form>
+</div>
+{% endblock %}

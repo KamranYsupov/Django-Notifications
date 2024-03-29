@@ -1,0 +1,25 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h1>Добавление записи</h1>
+<div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button id="add-news-obj-btn" type="submit">Добавить запись</button>
+    </form>
+</div>
+<script>
+        const addNewsObjBtn = document.querySelector("#add-news-obj-btn")
+        const titleInput = document.querySelector("#id_title")
+        console.log(titleInput)
+
+
+        addNewsObjBtn.onclick = function(e) {
+            notificationSocket.send(JSON.stringify({
+                 text: `${titleInput.value}`,
+                 time_create: 'Только что',
+                 }));
+        };
+</script>
+{% endblock %}

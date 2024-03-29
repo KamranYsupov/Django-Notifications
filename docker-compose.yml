@@ -1,0 +1,28 @@
+services:
+  web-app:
+    build:
+      context: .
+    environment:
+      - DB_HOST=database
+      - DB_NAME=db_name
+      - DB_USER=db_user
+      - DB_PASS=db_pass
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./:/DjangoNotifications
+    depends_on:
+      - database
+
+  database:
+    image: postgres:14.6-alpine
+    environment:
+      - POSTGRES_DB=db_name
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=db_pass
+      - POSTGRES_AUTH_METHOD_HOST=trust
+
+
+

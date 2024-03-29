@@ -1,0 +1,20 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h2 class="text-break">{{ news_obj.title }}</h2>
+<div>
+       <b class="text-break">{{ news_obj.author.username }}</b>
+       <p>{{ news_obj.content|linebreaks }}</p>
+       <span style="font-size:13.5px">
+           {{ news_obj.time_create }}
+       </span>
+</div>
+<hr>
+{% if request.user == news_obj.author %}
+   <a href="{% url 'change_news_obj' news_obj.id %}">
+       <button type="button" style="background:#5d86c7;">
+           Изменить
+       </button>
+   </a>
+{% endif %}
+{% endblock %}

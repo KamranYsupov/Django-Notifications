@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+<h2 style="margin-left:130px;color:blue">
+    <b>Новости</b>
+</h2>
+{% for obj in news %}
+   <a href="{% url 'read_news_obj' obj.id %}" style="text-decoration:none;">
+       <div style="width:450px;border: blue solid 1px;color:black;margin-bottom:10px;">
+           <h3 class="text-break">{{ obj.title }}</h3>
+           <span>Автор:
+               <b>{{ obj.author.username }}</b>
+           </span>
+           <p>{{ obj.content|truncatechars:200 }}</p>
+           <span style="font-size:13.5px">
+               {{ obj.time_create }}
+           </span>
+       </div>
+   </a>
+{% endfor %}
+{% endblock %}
