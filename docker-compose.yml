@@ -12,7 +12,7 @@ services:
     ports:
       - '8000:8000'
     volumes:
-      - ./:/DjangoNotifications
+      - ./:/Django-Notifications
     depends_on:
       - database
 
